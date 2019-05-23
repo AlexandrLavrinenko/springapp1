@@ -7,6 +7,10 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <!-- lesson 6 value from properties-file -->
+    <context:property-placeholder location="classpath:musicPlayer.properties"/>
+
+    <!-- lesson 2 -->
     <bean id="musicBean"
           class="ru.alishev.springcourse.ClassicalMusic">
     </bean>
@@ -14,7 +18,18 @@
     <!-- Урок 5: Внедрение зависимостей через XML. Dependency Injection (DI) -->
     <bean id="musicPlayer"
           class="ru.alishev.springcourse.MusicPlayer">
-        <constructor-arg ref = "musicBean"/>
+        <!-- lesson 5 -->
+        <property name="music" ref="musicBean"/>
+
+        <!-- lesson 6 (static)-->
+        <!--property name="name" value="Some name"/-->
+        <!--property name="volume" value="50"/-->
+
+        <!-- lesson 6 (property-file)-->
+        <property name="name" value="${musicPlayer.name}"/>
+        <property name="volume" value="${musicPlayer.volume}"/>
+
+        <!-- constructor-arg ref = "musicBean"/     lesson 5 -->
     </bean>
 
 </beans>
