@@ -9,6 +9,11 @@ public class MusicPlayer {
         this.music = music;
     }
 
+    // Урок 6: Внедрение зависимостей. Dependency Injection (DI)
+    public void setMusic(Music music) {
+        this.music = music;
+    }
+
     public void playMusic() {
         System.out.println("Playing: " + music.getSong());
     }
