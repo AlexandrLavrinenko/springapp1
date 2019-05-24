@@ -11,15 +11,30 @@
     <context:property-placeholder location="classpath:musicPlayer.properties"/>
 
     <!-- lesson 2 -->
-    <bean id="musicBean"
+    <bean id="musicBean1"
           class="ru.alishev.springcourse.ClassicalMusic">
+    </bean>
+
+    <bean id="musicBean2"
+          class="ru.alishev.springcourse.RockMusic">
+    </bean>
+
+    <bean id="musicBean3"
+          class="ru.alishev.springcourse.JazzMusic">
     </bean>
 
     <!-- Урок 5: Внедрение зависимостей через XML. Dependency Injection (DI) -->
     <bean id="musicPlayer"
           class="ru.alishev.springcourse.MusicPlayer">
         <!-- lesson 5 -->
-        <property name="music" ref="musicBean"/>
+        <!-- property name="music" ref="musicBean"/-->
+        <property name="musicList">
+            <list>
+                <ref bean="musicBean1"/>
+                <ref bean="musicBean2"/>
+                <ref bean="musicBean3"/>
+            </list>
+        </property>
 
         <!-- lesson 6 (static)-->
         <!--property name="name" value="Some name"/-->
