@@ -11,20 +11,31 @@
     <context:property-placeholder location="classpath:musicPlayer.properties"/>
 
     <!-- lesson 2 -->
-    <bean id="musicBean"
+    <bean id="musicBean1"
           class="ru.alishev.springcourse.ClassicalMusic">
     </bean>
 
+    <bean id="musicBean2"
+          class="ru.alishev.springcourse.RockMusic">
+    </bean>
 
-    <!-- Урок 5: Внедрение зависимостей через XML. Dependency Injection (DI) -->
-    <!-- Default Scope Singleton -->
+    <bean id="musicBean3"
+          class="ru.alishev.springcourse.JazzMusic">
+    </bean>
+
     <bean id="musicPlayer"
-          class="ru.alishev.springcourse.MusicPlayer"
-          scope="prototype">
-        <!-- lesson 5 -->
-        <property name="music" ref="musicBean"/>
+          class="ru.alishev.springcourse.MusicPlayerListHW">
 
-        <!-- lesson 6 (property-file)-->
+        <!-- LIST in Spring -->
+        <property name="musicList">
+            <list>
+                <ref bean="musicBean1"/>
+                <ref bean="musicBean2"/>
+                <ref bean="musicBean3"/>
+            </list>
+        </property>
+
+        <!-- property-file -->
         <property name="name" value="${musicPlayer.name}"/>
         <property name="volume" value="${musicPlayer.volume}"/>
 
